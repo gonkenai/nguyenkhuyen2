@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đề thi thử TN THPT - Trường THPT Nguyễn Khuyến</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 950px; margin: 0 auto; padding: 20px; background-color: #f0f2f5; color: #333; }
+        .page { display: none; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .active { display: block; }
+        h1, h2 { color: #1a73e8; text-align: center; text-transform: uppercase; margin-bottom: 10px; }
+        .section-title { color: #e67e22; font-weight: bold; border-bottom: 2px solid #e67e22; padding-bottom: 5px; margin: 30px 0 15px 0; text-transform: uppercase; }
+        .passage { background: #f8f9fa; border-left: 6px solid #1a73e8; padding: 20px; margin: 20px 0; white-space: pre-wrap; text-align: justify; border-radius: 0 8px 8px 0; }
+        .question { margin-bottom: 30px; padding: 15px; border-bottom: 1px solid #eee; }
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .option { padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; transition: all 0.2s; background: #fff; }
+        .option:hover:not(.locked) { border-color: #1a73e8; background: #f1f7fe; }
+        
+        .selected { background-color: #e8f0fe !important; border-color: #1a73e8 !important; font-weight: bold; color: #1a73e8; }
+        .locked { cursor: default; pointer-events: none; }
+        
+        .nav-btns { display: flex; justify-content: space-between; margin-top: 30px; }
+        button { padding: 12px 25px; cursor: pointer; background-color: #1a73e8; color: white; border: none; border-radius: 6px; font-weight: bold; font-size: 16px; }
+        button:hover { background-color: #1557b0; }
+        input[type="text"] { width: 100%; padding: 12px; margin: 15px 0; border: 2px solid #ddd; border-radius: 6px; font-size: 16px; box-sizing: border-box; }
+        .full-text-box { background: #fffde7; padding: 15px; border: 1px dashed #fbc02d; border-radius: 8px; margin-top: 10px; font-size: 0.95em; line-height: 1.8; }
+        
+        .wrong-list { text-align: left; margin-top: 30px; background: #fff5f5; padding: 20px; border-radius: 8px; border: 1px solid #feb2b2; }
+        .wrong-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed #fecdd3; }
+        .wrong-q-title { font-weight: bold; color: #c53030; }
+        .wrong-hint { margin-top: 5px; font-style: italic; color: #4a5568; background: #edf2f7; padding: 8px 12px; border-radius: 6px; border-left: 4px solid #718096; }
+        
+        @media (max-width: 600px) { .options { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <div id="page-welcome" class="page active">
+        <h1>TRƯỜNG THPT NGUYỄN KHUYẾN - BRVT</h1>
+        <h2>THI THỬ TN THPT LẦN 2 - NĂM HỌC 2025 - 2026</h2>
+        <div style="margin-top: 50px; text-align: center;">
+            <p>Vui lòng nhập họ tên học sinh để bắt đầu làm bài:</p>
+            <input type="text" id="student-name" placeholder="Họ và tên học sinh...">
+            <button onclick="startQuiz()" style="width: 200px; margin-top: 10px;">BẮT ĐẦU</button>
+        </div>
+    </div>
+
+    <div id="page-1" class="page">
+        <div class="section-title">PHẦN I. ĐIỀN TỪ TIN TỨC (CÂU 1-6)</div>
+        <div class="passage">
+<b>Phu Quoc Emerges as Tourism Highlight with Strong Early-Year Visitor Growth</b>
+
+Phu Quoc, voted Asia’s most beautiful island by readers of Condé Nast Traveller, welcomed around 1.2 million tourists in the first two months of the year. The destination received a large (1) ____ of visitors, including hundreds of thousands of international travellers, reflecting growing global interest in the island. Many travellers today are (2) ____ a new place to escape to, and Phu Quoc has increasingly appeared on their travel lists. Travel experts say the island’s natural scenery and relaxed pace continue to attract visitors from around the world.
+
+According to international travel media, the island’s main (3) ____ lies in its combination of tropical beaches, clear waters, and peaceful landscapes. Unlike many famous resorts, the island has managed to preserve an atmosphere (4) ____ many established tropical destinations have gradually lost, which adds to its charm. The island’s rapid growth has also made it a (5) ____ spot of Vietnam's tourism industry in recent years. Amid the (6) ____, authorities have established a tourism rapid response team to better protect visitors and quickly address service-related concerns.
+        </div>
+
+        <div class="question" data-id="1" data-ans="C" data-title="Question 1 (Phu Quoc Tourism)" data-hint="Kiểm tra danh từ đếm được số nhiều (visitors). Cụm từ chỉ lượng đi với danh từ đếm được.">
+            <p><b>Question 1.</b></p>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. degree</div><div class="option" onclick="check(this, 'B')">B. amount</div><div class="option" onclick="check(this, 'C')">C. number</div><div class="option" onclick="check(this, 'D')">D. handful</div></div>
+        </div>
+        <div class="question" data-id="2" data-ans="B" data-title="Question 2 (Phu Quoc Tourism)" data-hint="Kiểm tra cụm động từ (Phrasal Verb). Cần động từ mang nghĩa tìm kiếm một địa điểm mới.">
+            <p><b>Question 2.</b></p>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. turning out</div><div class="option" onclick="check(this, 'B')">B. looking for</div><div class="option" onclick="check(this, 'C')">C. running into</div><div class="option" onclick="check(this, 'D')">D. coming up</div></div>
+        </div>
+        <div class="question" data-id="3" data-ans="C" data-title="Question 3 (Phu Quoc Tourism)" data-hint="Kiểm tra từ vựng (Vocabulary). Chọn danh từ mang nghĩa sức hấp dẫn, sức cuốn hút của hòn đảo.">
+            <p><b>Question 3.</b></p>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. identity</div><div class="option" onclick="check(this, 'B')">B. authority</div><div class="option" onclick="check(this, 'C')">C. appeal</div><div class="option" onclick="check(this, 'D')">D. insight</div></div>
+        </div>
+        <div class="question" data-id="4" data-ans="D" data-title="Question 4 (Phu Quoc Tourism)" data-hint="Kiểm tra đại từ quan hệ (Relative Pronoun) làm tân ngữ thay thế cho danh từ chỉ vật 'an atmosphere'.">
+            <p><b>Question 4.</b></p>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. what</div><div class="option" onclick="check(this, 'B')">B. whose</div><div class="option" onclick="check(this, 'C')">C. who</div><div class="option" onclick="check(this, 'D')">D. that</div></div>
+        </div>
+        <div class="question" data-id="5" data-ans="B" data-title="Question 5 (Phu Quoc Tourism)" data-hint="Kiểm tra kết hợp từ (Collocation). Đi với danh từ 'spot' để chỉ một điểm sáng, điểm nổi bật.">
+            <p><b>Question 5.</b></p>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. high</div><div class="option" onclick="check(this, 'B')">B. bright</div><div class="option" onclick="check(this, 'C')">C. smart</div><div class="option" onclick="check(this, 'D')">D. large</div></div>
+        </div>
+        <div class="question" data-id="6" data-ans="A" data-title="Question 6 (Phu Quoc Tourism)" data-hint="Kiểm tra vị trí trật tự cụm danh từ (Noun Phrase Word Order). Trật tự đúng của cụm từ 'bùng nổ du lịch địa phương'.">
+            <p><b>Question 6.</b></p>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. local travel boom</div><div class="option" onclick="check(this, 'B')">B. travel local boom</div><div class="option" onclick="check(this, 'C')">C. boom local travel</div><div class="option" onclick="check(this, 'D')">D. local boom travel</div></div>
+        </div>
+
+        <div class="section-title">PHẦN II. ĐIỀN TỪ TỜ RƠI (CÂU 7-12)</div>
+        <div class="passage">
+<b>Cancel Plans Gracefully: A Quick Guide</b>
+
+Sometimes plans have to change. (7) ______ last-minute cancellations, the way you handle it can make all the difference. Experts say that thoughtful communication helps protect trust and respect in relationships.
+
+Start with an apology. A sincere apology shows that you respect the other person’s time, and apologising is key (8) ______ maintaining relationships. Be honest but brief. You don’t have to share (9) ______ detail, but a brief, truthful explanation helps the other person understand the situation. Suggest another plan. If possible, offer an (10) ______ option, such as meeting on another day or choosing a simpler activity together.
+
+Use respectful language. Messages (11) ______ with care and empathy can soften disappointment and show that you value the relationship. Keep perspective. Everyone cancels sometimes, so don’t (12) ______ yourself up if circumstances truly prevent you from attending.
+        </div>
+
+        <div class="question" data-id="7" data-ans="A" data-title="Question 7 (Cancel Plans)" data-hint="Kiểm tra cụm giới từ. Cần nghĩa 'Trong trường hợp của...' phù hợp với việc hủy hẹn vào phút chót.">
+            <p><b>Question 7.</b></p>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. In case of</div><div class="option" onclick="check(this, 'B')">B. In spite of</div><div class="option" onclick="check(this, 'C')">C. On account of</div><div class="option" onclick="check(this, 'D')">D. In addition to</div></div>
+        </div>
+        <div class="question" data-id="8" data-ans="B" data-title="Question 8 (Cancel Plans)" data-hint="Kiểm tra cấu trúc giới đi kèm danh từ/tính từ: 'Key + giới từ + V-ing/N' mang nghĩa 'chìa khóa/yếu tố quyết định để làm gì'.">
+            <p><b>Question 8.</b></p>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. with</div><div class="option" onclick="check(this, 'B')">B. to</div><div class="option" onclick="check(this, 'C')">C. of</div><div class="option" onclick="check(this, 'D')">D. for</div></div>
+        </div>
+        <div class="question" data-id="9" data-ans="C" data-title="Question 9 (Cancel Plans)" data-hint="Kiểm tra từ hạn định (Determiner). Đi với danh từ số ít 'detail' biểu thị nghĩa toàn bộ, mọi chi tiết.">
+            <p><b>Question 9.</b></p>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. a few</div><div class="option" onclick="check(this, 'B')">B. others</div><div class="option" onclick="check(this, 'C')">C. every</div><div class="option" onclick="check(this, 'D')">D. several</div></div>
+        </div>
+        <div class="question" data-id="10" data-ans="B" data-title="Question 10 (Cancel Plans)" data-hint="Kiểm tra từ loại (Word Form). Đứng trước danh từ 'option' cần một tính từ mang nghĩa 'thay thế'.">
+            <p><b>Question 10.</b></p>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. alter</div><div class="option" onclick="check(this, 'B')">B. alternative</div><div class="option" onclick="check(this, 'C')">C. alternatively</div><div class="option" onclick="check(this, 'D')">D. alteration</div></div>
+        </div>
+        <div class="question" data-id="11" data-ans="D" data-title="Question 11 (Cancel Plans)" data-hint="Kiểm tra rút gọn mệnh đề quan hệ dạng bị động (Mệnh đề mang nghĩa 'Những tin nhắn ĐƯỢC VIẾT với sự cẩn thận...').">
+            <p><b>Question 11.</b></p>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. write</div><div class="option" onclick="check(this, 'B')">B. having written</div><div class="option" onclick="check(this, 'C')">C. writing</div><div class="option" onclick="check(this, 'D')">D. written</div></div>
+        </div>
+        <div class="question" data-id="12" data-ans="C" data-title="Question 12 (Cancel Plans)" data-hint="Kiểm tra thành ngữ/cụm từ (Idiom/Collocation). Cụm 'beat oneself up' mang nghĩa tự trách bản thân, dằn vặt bản thân.">
+            <p><b>Question 12.</b></p>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. strike</div><div class="option" onclick="check(this, 'B')">B. hit</div><div class="option" onclick="check(this, 'C')">C. beat</div><div class="option" onclick="check(this, 'D')">D. push</div></div>
+        </div>
+
+        <div class="nav-btns"><span></span><button onclick="nextPage(2)">Trang tiếp theo</button></div>
+    </div>
+
+    <div id="page-2" class="page">
+        <div class="section-title">PHẦN III. SẮP XẾP HỘI THOẠI & VĂN BẢN (CÂU 13-17)</div>
+        
+        <div class="question" data-id="13" data-ans="B" data-title="Question 13 (Hội thoại Henry & Jane)" data-hint="Xác định câu mở đầu nêu vấn đề chưa hiểu (a), câu tiếp theo giải thích định nghĩa (c) và câu cuối cùng cảm ơn (b).">
+            <p><b>Question 13.</b> Mark the letter A, B, C or D on your answer sheet to indicate the best arrangement of utterances to make a meaningful exchange:</p>
+            <div class="full-text-box">
+                a. Henry: I still don’t think I fully understand the concept of “teamwork skills” that we learned about in class.<br>
+                b. Henry: Oh, I see. Thanks a lot for your explanation!<br>
+                c. Jane: Well, it basically means working well with other people to get things done.
+            </div>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. c – a – b</div><div class="option" onclick="check(this, 'B')">B. a – c – b</div><div class="option" onclick="check(this, 'C')">C. a – b – c</div><div class="option" onclick="check(this, 'D')">D. b – a – c</div></div>
+        </div>
+
+        <div class="question" data-id="14" data-ans="C" data-title="Question 14 (Hội thoại Frank & Linda)" data-hint="Lưu ý logic hỏi thăm kỳ thi (b) -> trả lời kết quả thi/hỏi lại bài thuyết trình (e) -> phản hồi bài thuyết trình thành công nhờ giúp đỡ (c) -> rủ học bài tiếp (a) -> đồng ý hẹn giờ (d).">
+            <p><b>Question 14.</b> Mark the letter A, B, C or D on your answer sheet to indicate the best arrangement of utterances to make a meaningful exchange:</p>
+            <div class="full-text-box">
+                a. Frank: No problem. So, do you feel like studying tomorrow for our math exam?<br>
+                b. Linda: Hey! How did your physics exam go?<br>
+                c. Linda: Oh, it went really well – thanks to your help!<br>
+                d. Linda: Yeah, sure! Come over around 10:00, after breakfast.<br>
+                e. Frank: Not bad, thanks. I’m just glad it’s over! How about you? How did your presentation go?
+            </div>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. b – a – c – e – d</div><div class="option" onclick="check(this, 'B')">B. c – a – d – e – b</div><div class="option" onclick="check(this, 'C')">C. b – e – c – a – d</div><div class="option" onclick="check(this, 'D')">D. d – e – b – a – c</div></div>
+        </div>
+
+        <div class="question" data-id="15" data-ans="A" data-title="Question 15 (Thư ứng tuyển)" data-hint="Cấu trúc thư xin việc chuẩn: Nêu lý do viết thư ứng tuyển vị trí (a) -> Giới thiệu kinh nghiệm tổng quát (d) -> Chi tiết về các công việc đã làm trong thời gian đó (b) -> Tổng kết kỹ năng đạt được từ thành tựu (c) -> Lời cảm ơn và mong phản hồi ở cuối thư (e).">
+            <p><b>Question 15.</b> Mark the letter A, B, C or D on your answer sheet to indicate the best arrangement of sentences to make a meaningful letter:</p>
+            <div class="full-text-box">
+                <b>Dear Hiring Manager,</b><br>
+                a. I am writing to apply for the Tour Guide position advertised on your website.<br>
+                b. My experience during this period includes leading both domestic and international tours, along with a proven track record of delivering excellent customer service.<br>
+                c. These achievements reflect my strong interpersonal and communication skills.<br>
+                d. Having worked in the tourism industry for over five years, I am confident in my ability to contribute positively to your team.<br>
+                e. Thank you for considering my application, and I look forward to your response. Yours faithfully,
+            </div>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. a – d – b – c – e</div><div class="option" onclick="check(this, 'B')">B. a – b – c – d – e</div><div class="option" onclick="check(this, 'C')">C. a – d – c – b – e</div><div class="option" onclick="check(this, 'D')">D. a – b – d – c – e</div></div>
+        </div>
+
+        <div class="question" data-id="16" data-ans="C" data-title="Question 16 (Đoạn văn Karaoke)" data-hint="Phân tích liên kết: (e) giới thiệu khái niệm karaoke và cuộc thi hát -> (d) nêu các tiêu chí đánh giá trong cuộc thi -> (b) rút ra chiến thuật chọn bài dựa trên việc đánh giá -> (a) đưa ra quan điểm cá nhân đối lập với tính cạnh tranh -> (c) làm rõ lý do tại sao cá nhân thích bộc lộ cảm xúc qua lời bài hát.">
+            <p><b>Question 16.</b> Mark the letter A, B, C or D on your answer sheet to indicate the best arrangement of sentences to make a meaningful text:</p>
+            <div class="full-text-box">
+                a. For me, though, karaoke is about expressing your feelings through the song.<br>
+                b. As winning at karaoke depends largely on the songs you sing, you have to be strategic and choose ones that show off your range.<br>
+                c. While I’m not good at communicating my inner thoughts, I can do that through other people’s lyrics.<br>
+                d. In these events, you are evaluated on your vocal skills, delivery of the song, and mastery of the stage.<br>
+                e. We all know karaoke as a fun activity to enjoy with friends on a night out, but competitive karaoke is all around us – take popular singing contests, for example.
+            </div>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. b – e – d – a – c</div><div class="option" onclick="check(this, 'B')">B. b – e – a – c – d</div><div class="option" onclick="check(this, 'C')">C. e – d – b – a – c</div><div class="option" onclick="check(this, 'D')">D. e – b – d – c – a</div></div>
+        </div>
+
+        <div class="question" data-id="17" data-ans="B" data-title="Question 17 (Đoạn văn Madagascar)" data-hint="Phân tích mạch lạc: (c) giới thiệu sự căng thẳng giữa nông nghiệp và bảo tồn tại Madagascar -> (b) giải thích nguyên nhân do rừng bị chuyển thành đất trồng lúa -> (d) giải thích lý do sâu xa phá rừng là vì sâu bệnh phá hoại mùa màng cũ -> (a) nêu kết quả tàn phá sinh thái nhưng có loài ngoại lệ -> (e) loài dơi ăn côn trùng lại đang phát triển tốt giúp ích nông dân.">
+            <p><b>Question 17.</b> Mark the letter A, B, C or D on your answer sheet to indicate the best arrangement of sentences to make a meaningful text:</p>
+            <div class="full-text-box">
+                a. The result is devastating habitat and biodiversity loss on the island, but not all species are suffering.<br>
+                b. Madagascar’s forests are being converted to agricultural land at a rate of one percent every year, a shift fueled by the cultivation of the country’s main staple crop: rice.<br>
+                c. There are few places in the world where relations between agriculture and conservation are more strained.<br>
+                d. A key reason for this destruction is that insect pests are destroying vast quantities of what is grown by local subsistence farmers, leading them to clear forest to create new paddy fields.<br>
+                e. In fact, some of the island’s insect-eating bats are currently thriving and this has important implications for farmers and conservationists alike.
+            </div>
+            <div class="options"><div class="option" onclick="check(this, 'A')">A. c – d – b – a – e</div><div class="option" onclick="check(this, 'B')">B. c – b – d – a – e</div><div class="option" onclick="check(this, 'C')">C. b – a – d – c – e</div><div class="option" onclick="check(this, 'D')">D. b – d – a – c – e</div></div>
+        </div>
+
+        <div class="nav-btns"><button onclick="nextPage(1)">Quay lại</button><button onclick="nextPage(3)">Trang tiếp theo</button></div>
+    </div>
+
+    <div id="page-3" class="page">
+        <div class="section-title">PHẦN IV. ĐIỀN ĐOẠN VĂN (ELON MUSK - CÂU 18-22)</div>
+        <div class="passage">
+<b>LESSONS FROM ELON MUSK’S LIFE STORY</b>
+
+Like that of many successful icons, (18) ______ . His life story is as unpredictable as his character, entwined with surprisingly relatable moments, and darkened by exceptionally harsh experiences. At first glance, Elon Musk seems as if he were simply born to be amazing. However, his beginnings were not reminiscent of a billionaire entrepreneur. His childhood bullies were not amazed by his unique vision, (19) ______ . Elon Musk wasn’t born into greatness at all; he fought his way to it.
+
+Musk’s success demonstrates that sometimes success comes from learning from your failures and (20) ______ in your abilities. His drive and perseverance are powerful reminders of how far we can truly go when we don’t let our shortcomings interfere with our goals. (21) ______ , but we all have the potential to follow our dreams and achieve so much more than we believe we are capable of. Work, hardships, and challenges are companions in every journey to success. Faced with these obstacles throughout his journey, Elon Musk reminds us that “When something is important enough, you do it, (22) ______ .”
+        </div>
+
+        <div class="question" data-id="18" data-ans="B" data-title="Question 18 (Điền đoạn văn Elon Musk)" data-hint="Cần cấu trúc song song hoặc làm rõ chủ ngữ. Cụm từ 'Elon Musk’s rise to stardom' làm chủ ngữ chính hợp logic nhất để kết nối với đại từ 'His' ở câu sau.">
+            <p><b>Question 18.</b></p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. the birth of Elon Musk did not begin his rise to stardom</div>
+                <div class="option" onclick="check(this, 'B')">B. Elon Musk’s rise to stardom did not begin at birth</div>
+                <div class="option" onclick="check(this, 'C')">C. the rise to stardom did not begin at Elon Musk’s birth</div>
+                <div class="option" onclick="check(this, 'D')">D. Elon Musk did not begin to rise to stardom at birth</div>
+            </div>
+        </div>
+        <div class="question" data-id="19" data-ans="A" data-title="Question 19 (Điền đoạn văn Elon Musk)" data-hint="Cấu trúc đảo ngữ phối hợp phủ định: 'Nor + trợ động từ + S + V nguyên mẫu' dùng để bổ sung một ý phủ định tiếp theo ('những ý tưởng đột phá của ông cũng không diễn ra sau một đêm').">
+            <p><b>Question 19.</b></p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. nor did his most groundbreaking ideas happen overnight</div>
+                <div class="option" onclick="check(this, 'B')">B. neither his most groundbreaking ideas happened overnight</div>
+                <div class="option" onclick="check(this, 'C')">C. either did his most groundbreaking ideas happen overnight</div>
+                <div class="option" onclick="check(this, 'D')">D. his most groundbreaking ideas didn’t happen overnight too</div>
+            </div>
+        </div>
+        <div class="question" data-id="20" data-ans="B" data-title="Question 20 (Điền đoạn văn Elon Musk)" data-hint="Cấu trúc song hành (Parallelism). Sau giới từ 'from' là V-ing ('learning from...'), nên vế sau nối bằng 'and' cũng cần dạng V-ing ('strongly believing...').">
+            <p><b>Question 20.</b></p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. that you must always move forward with a strong belief</div>
+                <div class="option" onclick="check(this, 'B')">B. strongly believing that you must always move forward</div>
+                <div class="option" onclick="check(this, 'C')">C. you must always have a strong belief to move forward</div>
+                <div class="option" onclick="check(this, 'D')">D. which always move you forward with a strong belief</div>
+            </div>
+        </div>
+        <div class="question" data-id="21" data-ans="C" data-title="Question 21 (Điền đoạn văn Elon Musk)" data-hint="Sử dụng từ trạng ngữ liên kết nhượng bộ phù hợp: 'Granted' (Phải công nhận rằng/Dẫu rằng, không phải ai trong chúng ta cũng có tài năng bẩm sinh...) để chuyển ý sang vế 'nhưng chúng ta đều có tiềm năng'.">
+            <p><b>Question 21.</b></p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. On the contrary, many of us lack the natural talent or even motivation to build billion-dollar companies</div>
+                <div class="option" onclick="check(this, 'B')">B. The natural talent or even motivation to build billion-dollar companies is what none of us have</div>
+                <div class="option" onclick="check(this, 'C')">C. Granted, not all of us have the natural talent or even motivation to build billion-dollar companies</div>
+                <div class="option" onclick="check(this, 'D')">D. The natural talent or even motivation to build billion-dollar companies is possessed by quite a few of us</div>
+            </div>
+        </div>
+        <div class="question" data-id="22" data-ans="C" data-title="Question 22 (Điền đoạn văn Elon Musk)" data-hint="Kiểm tra liên từ chỉ sự nhượng bộ: 'even if' (ngay cả khi/cho dù là khả năng thành công không nghiêng về phía bạn).">
+            <p><b>Question 22.</b></p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. as if the odds aren’t in your favor</div>
+                <div class="option" onclick="check(this, 'B')">B. even if your favor isn’t in the odds</div>
+                <div class="option" onclick="check(this, 'C')">C. even if the odds aren’t in your favor</div>
+                <div class="option" onclick="check(this, 'D')">D. as if your favor isn’t in the odds</div>
+            </div>
+        </div>
+
+        <div class="nav-btns"><button onclick="nextPage(2)">Quay lại</button><button onclick="nextPage(4)">Trang tiếp theo</button></div>
+    </div>
+
+    <div id="page-4" class="page">
+        <div class="section-title">PHẦN V. ĐỌC HIỂU ĐOẠN VĂN 1 (CÂU 23-30)</div>
+        <div class="passage">
+<b>Is the west falling out of love with the car?</b>
+
+For environmentalists it seems an impossible dream, but it is happening. While baby boomers and those with young families may carry on using four wheels, a combination of our ageing societies and a new attitude among the young seems to be breaking our 20th-century car addiction. Somewhere along the road, we reached the high point of the car and are now <u>cruising</u> down the other side.
+
+The phenomenon was first recognised in “The Road Less Traveled”, a 2008 report by the Brookings Institution in Washington DC, but had been going on largely unnoticed for years. Japan reached it in the 1990s. They talked there of “demotorisation”. The west had its tipping point in 2004. That year the US, UK, Germany, France, Australia and Sweden all saw the start of a decline in the number of kilometres the average person travelled in a car that continues today.
+
+What could be driving us off the road? Fuel costs and rising insurance premiums may be a factor. And urban gridlock, combined with an absence of parking places and congestion charging, makes an increasing number of us look on the car as a dumb way to move around in cities where there are public transport alternatives.
+
+Demographics are another possible explanation. It is surely no accident that “peak car” happened first in Japan, which has the world’s oldest population. Pensioners do not drive to work, and many don’t drive at all. There is also the rise of “virtual commuters” who work from home via the Internet. Besides these new employment patterns, leisure lifestyles are also changing. Social scientists detect a new “culture of urbanism”. The stylish way to live these days is in inner-city apartments, not the suburbs. Richard Florida, an urban studies theorist at the University of Toronto in Canada, points out that the young shop online, telecommute, live in walkable city neighbourhoods near public transport and rely more on social media and less on face-to-face visiting. Given those changes, <u>they</u> can think of better ways to spend their money than buying a car.
+
+Some think car use will revive if and when economies recover. But it looks like something more <u>profound</u> is going on. Florida calls it a “great reset” in society that will have profound consequences – not least for the environment. Even our most treasured consumer aspirations can have a peak. Enough can be enough.
+        </div>
+
+        <div class="question" data-id="23" data-ans="B" data-title="Question 23 (Bài đọc Ô tô)" data-hint="Đọc toàn bài để tìm tiêu đề thích hợp nhất. Toàn bài viết về xu hướng giảm sự đam mê, giảm số lượng sử dụng và nghiện ô tô ở các nước phương Tây (Sự suy giảm của chứng cuồng xe hơi).">
+            <p><b>Question 23.</b> Which best serves as the title for the passage?</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. Road Travel Trends: An In-Depth Examination</div>
+                <div class="option" onclick="check(this, 'B')">B. Motormania's Decline: A Comprehensive View</div>
+                <div class="option" onclick="check(this, 'C')">C. Environmental Reset: A Significant Shift</div>
+                <div class="option" onclick="check(this, 'D')">D. Gen Z's Role: An Analytical Perspective</div>
+            </div>
+        </div>
+        <div class="question" data-id="24" data-ans="D" data-title="Question 24 (Bài đọc Ô tô)" data-hint="Ngữ cảnh câu 'reached the high point of the car and are now cruising down the other side' ngụ ý chiếc xe đang đi chậm dần xuống dốc bên kia sau khi đạt đỉnh cao sử dụng.">
+            <p><b>Question 24.</b> The word “ <b>cruising</b> ” in paragraph 1 is CLOSEST in meaning to ____________.</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. speeding</div>
+                <div class="option" onclick="check(this, 'B')">B. voyaging</div>
+                <div class="option" onclick="check(this, 'C')">C. travelling aggressively</div>
+                <div class="option" onclick="check(this, 'D')">D. driving slowly</div>
+            </div>
+        </div>
+        <div class="question" data-id="25" data-ans="B" data-title="Question 25 (Bài đọc Ô tô)" data-hint="Thông tin ở đoạn 3 chỉ ra các yếu tố làm giảm nhu cầu lái xe: 'Fuel costs and rising insurance premiums may be a factor.' (Giá nhiên liệu tăng).">
+            <p><b>Question 25.</b> According to paragraph 3, what is stated regarding decline in motorization?</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. Numbers of remote work are experiencing a decline.</div>
+                <div class="option" onclick="check(this, 'B')">B. Surging petrol prices may be a contributing factor.</div>
+                <div class="option" onclick="check(this, 'C')">C. Increased car usage due to added parking spaces.</div>
+                <div class="option" onclick="check(this, 'D')">D. Japanese seniors are experiencing a lack of car accessibility.</div>
+            </div>
+        </div>
+        <div class="question" data-id="26" data-ans="D" data-title="Question 26 (Bài đọc Ô tô)" data-hint="Đoạn 4 nói về người trẻ: 'Richard Florida... points out that the young... Given those changes, they can think...' -> đại từ 'they' dùng để chỉ 'youngsters' (những người trẻ tuổi).">
+            <p><b>Question 26.</b> The word “ <b>they</b> ” in paragraph 4 refers to ____________.</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. changes</div>
+                <div class="option" onclick="check(this, 'B')">B. studies</div>
+                <div class="option" onclick="check(this, 'C')">C. neighbourhoods</div>
+                <div class="option" onclick="check(this, 'D')">D. youngsters</div>
+            </div>
+        </div>
+        <div class="question" data-id="27" data-ans="C" data-title="Question 27 (Bài đọc Ô tô)" data-hint="Đoạn 2 chỉ ra: 'Japan reached it in the 1990s... The west had its tipping point in 2004' chứng tỏ Nhật Bản chứng kiến xu hướng giảm đi trước các quốc gia phương Tây khác.">
+            <p><b>Question 27.</b> Which of the following is TRUE, according to the passage?</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. Virtual commuters prefer to live in inner-city apartments rather than the cities’ outskirts.</div>
+                <div class="option" onclick="check(this, 'B')">B. Private transport usage has risen considerably as a result of congestion pricing.</div>
+                <div class="option" onclick="check(this, 'C')">C. The Japanese witnessed a decline in motorisation prior to other Western nations.</div>
+                <div class="option" onclick="check(this, 'D')">D. People today enjoy using social media more than visiting friends and family face to face.</div>
+            </div>
+        </div>
+        <div class="question" data-id="28" data-ans="C" data-title="Question 28 (Bài đọc Ô tô)" data-hint="Từ 'profound' mang nghĩa sâu sắc, sâu rộng, có tầm ảnh hưởng lớn. Từ TRÁI NGHĨA với nó là 'trivial' (tầm thường, không quan trọng, nông cạn).">
+            <p><b>Question 28.</b> The word “ <b>profound</b> ” in paragraph 5 is OPPPOSITE in meaning to ____________.</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. serious</div>
+                <div class="option" onclick="check(this, 'B')">B. thorough</div>
+                <div class="option" onclick="check(this, 'C')">C. trivial</div>
+                <div class="option" onclick="check(this, 'D')">D. important</div>
+            </div>
+        </div>
+        <div class="question" data-id="29" data-ans="B" data-title="Question 29 (Bài đọc Ô tô)" data-hint="Đoạn 2 có câu: 'The phenomenon was first recognised in “The Road Less Traveled”, a 2008 report...' chứng tỏ báo cáo giảm xe hơi được nhắc tới ở đoạn 2.">
+            <p><b>Question 29.</b> Which paragraph mentions a neglected document about the reduction in car use?</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. Paragraph 1</div>
+                <div class="option" onclick="check(this, 'B')">B. Paragraph 2</div>
+                <div class="option" onclick="check(this, 'C')">C. Paragraph 3</div>
+                <div class="option" onclick="check(this, 'D')">D. Paragraph 4</div>
+            </div>
+        </div>
+        <div class="question" data-id="30" data-ans="C" data-title="Question 30 (Bài đọc Ô tô)" data-hint="Đoạn 4 thảo luận sâu sắc về các yếu tố thay đổi lối sống hiện đại như văn hóa đô thị, mua sắm online, làm việc từ xa ảnh hưởng việc dùng ô tô.">
+            <p><b>Question 30.</b> Which paragraph mentions a change in modern lifestyle that affects car use?</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. Paragraph 2</div>
+                <div class="option" onclick="check(this, 'B')">B. Paragraph 3</div>
+                <div class="option" onclick="check(this, 'C')">C. Paragraph 4</div>
+                <div class="option" onclick="check(this, 'D')">D. Paragraph 5</div>
+            </div>
+        </div>
+
+        <div class="nav-btns"><button onclick="nextPage(3)">Quay lại</button><button onclick="nextPage(5)">Trang tiếp theo</button></div>
+    </div>
+
+    <div id="page-5" class="page">
+        <div class="section-title">PHẦN VI. ĐỌC HIỂU ĐOẠN VĂN 2 (CÂU 31-40)</div>
+        <div class="passage">
+On the surface, a desert appears to be one of the harshest environments on Earth yet a remarkable variety or plants have adapted to thrive in this dry climate. Despite their origins in different locations around the globe, desert plants have developed similar strategies for surviving in arid environments. Some plants have adapted in such a way that it is hard to tell them apart even though they belong to very different biological families, one evolution of certain survival strategies which are shared across geographic and biological boundaries.
+
+In general, the survival strategies of desert plants can be divided into two kinds: adaptation for quick use of <u>ephemeral</u> resources (“maximum variance behavior”) and adaptation for the best use of poor but more permanent resources (“minimum variance behavior”). The former strategy involves adaptation to environmental changes, such as seasonal availability of water. This is observed in desert annuals and perennials alike. Such plants tend to grow rapidly and produce many seeds under the right conditions. The latter strategy involves adaptation to the worst possible conditions, which can be seen in succulents, true xerophytes, and grasses. These plants usually grow slowly, use water efficiently, and exhibit passive cooling.
+
+Water scarcity and heat are the key factors limiting the survival of desert plants. [ I ] Depending on strategies and physical adaptations, they can be divided into either succulents or drought-resistant plants. For the most part, succulents have evolved extensive, shallow root systems to quickly absorb water during brief periods of heavy rainfall. [ II ] Water is then stored in the fleshy tissue of their thick trunks or lobes, as well as in the roots. The cactus is a good example of a succulent. [ III ] To retain water, succulents have waxy coatings on their skin and a modified system of respiration. The stomata (surface pores), through which the plant takes in carbon dioxide and releases oxygen, open only at night when temperatures are cooler and less water from the plant will evaporate. [ IV ] Unlike most other plants, a succulent stores all or most of its chlorophyll, the chemical essential to photosynthesis, in its stem, skin, or other outer tissues, rather than concentrating it in the leaves. Doing this places it in a strong, well-watered part of the plant, rather than in an appendage susceptible to drying out and dropping off.
+
+Drought-resistant plants, or xerophytes, come in many forms including true xerophytes, deciduous plants, and grasses. Xerophytic shrubs, such as the five species of creosote bush, are the most abundant type of vegetation in most arid environments. They are able to withstand desiccation in severe droughts without dying. Some have evolved small leaves with special coatings to reduce loss of water through evaporation. Others have replaced leaves with thorns or spines. <u>While succulent roots form shallow, dense webs, xerophytes tend to develop deep root networks that pull water out of soil other desert plants cannot reach</u>. For example, the roots of the mesquite bush, said to have the deepest root systems among desert plants, can reach depths of up to eighty feet.
+
+Succulents and xerophytes, on the one hand, have physically adapted to gather and retain water to survive long periods of drought. Drought-avoiding plants, on the other hand, escape unfavorable conditions by perishing. <u>These</u> include annuals and perennials. Because profuse seed development is crucial to the survival of most annual species, they tend to produce far more flowers than other types of desert plants. The desert marigold of the American southwest, for example, has adapted to seasonal changes in rainfall by growing rapidly, bursting into a brilliant display of yellow flowers, and then dropping a cascade of seeds before dying. In some cases, annuals complete their entire life cycle in a matter of a few weeks or months. Their seeds may remain inactive for up to ten years while waiting for wetter conditions. Perennials, such as the ocotillo, may go dormant during dry periods, spring to life when it rains, and then return to dormancy in a process that may occur up to five times per year.
+        </div>
+
+        <div class="question" data-id="31" data-ans="B" data-title="Question 31 (Bài đọc Sa mạc)" data-hint="Đoạn 1 nêu rõ: 'desert plants have developed similar strategies for surviving in arid environments... even though they belong to very different biological families' -> chúng phát triển các đặc điểm tương tự bất chấp nguồn gốc địa lý.">
+            <p><b>Question 31.</b> According to paragraph 1, which of the following is TRUE of desert plants?</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. They are hard to see in the harsh desert landscape</div>
+                <div class="option" onclick="check(this, 'B')">B. They have evolved similar features, regardless of geographic origins</div>
+                <div class="option" onclick="check(this, 'C')">C. They have evolved from different families that exchanged survival strategies</div>
+                <div class="option" onclick="check(this, 'D')">D. They all look essentially the same.</div>
+            </div>
+        </div>
+        <div class="question" data-id="32" data-ans="C" data-title="Question 32 (Bài đọc Sa mạc)" data-hint="Từ 'ephemeral' trong đoạn văn chỉ các nguồn tài nguyên xuất hiện rất ngắn, tạm thời (ví dụ như các trận mưa sa mạc chớp nhoáng). Do đó nó đồng nghĩa với từ 'temporary'.">
+            <p><b>Question 32.</b> The word “ <b>ephemeral</b> ” in the passage is closest in meaning to ____________.</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. minimal</div>
+                <div class="option" onclick="check(this, 'B')">B. annual</div>
+                <div class="option" onclick="check(this, 'C')">C. temporary</div>
+                <div class="option" onclick="check(this, 'D')">D. abundant</div>
+            </div>
+        </div>
+        <div class="question" data-ans="B" data-id="33" data-title="Question 33 (Bài đọc Sa mạc)" data-hint="Xét câu chèn: câu chèn giải thích về cơ chế hút và trữ nước của các cây thích nghi với điều kiện tồi tệ nhất. Nó bổ sung trực tiếp sau câu nói về hệ thống rễ nông của loài mọng nước [II].">
+            <p><b>Question 33.</b> Where in paragraph 3 does the following sentence best fit? <br><i>“Plants that have adapted to the worst possible conditions have evolved ways for quickly acquiring and storing water to ensure their survival.”</i></p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. [I]</div>
+                <div class="option" onclick="check(this, 'B')">B. [II]</div>
+                <div class="option" onclick="check(this, 'C')">C. [III]</div>
+                <div class="option" onclick="check(this, 'D')">D. [IV]</div>
+            </div>
+        </div>
+        <div class="question" data-id="34" data-ans="B" data-title="Question 34 (Bài đọc Sa mạc)" data-hint="Tác giả nói về cơ chế hoạt động của khí khổng (stomata) mở vào ban đêm để chứng minh sự thích nghi độc đáo của các loài mọng nước (succulents) nhằm hạn chế thoát hơi nước.">
+            <p><b>Question 34.</b> Why does the author mention <b>the action of stomata</b> in the passage?</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. To explain how chlorophyll works</div>
+                <div class="option" onclick="check(this, 'B')">B. To emphasize a unique adaptation of succulents</div>
+                <div class="option" onclick="check(this, 'C')">C. To illustrate that cacti have no leaves.</div>
+                <div class="option" onclick="check(this, 'D')">D. To describe the basic parts of a succulent</div>
+            </div>
+        </div>
+        <div class="question" data-id="35" data-ans="D" data-title="Question 35 (Bài đọc Sa mạc)" data-hint="Câu gốc đối lập rễ của mọng nước (shallow, dense webs - mạng lưới rễ nông gần bề mặt) với xerophytes (deep root networks - mạng lưới rễ đâm sâu dưới lòng đất). Câu D viết lại chuẩn xác cấu trúc tương phản này.">
+            <p><b>Question 35.</b> Which of the following best paraphrases the underlined sentence in paragraph 4?</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. At the same time that xerophytes evolved their thick webs of low-lying roots, succulents formed thin networks to reach surface water.</div>
+                <div class="option" onclick="check(this, 'B')">B. Both succulents and xerophytes form long, dense networks of roots in order to reach water within the soil that non-developed plants could not reach.</div>
+                <div class="option" onclick="check(this, 'C')">C. Because of their long roots systems developed to reach water deep within the soil, xerophytes have become more dominant in desert environments than succulents</div>
+                <div class="option" onclick="check(this, 'D')">D. In contrast to xerophytes, which produce long root systems to tap water deep within the soil, succulents develop a thick web of roots just below the soil surface.</div>
+            </div>
+        </div>
+        <div class="question" data-id="36" data-ans="C" data-title="Question 36 (Bài đọc Sa mạc)" data-hint="Đoạn 4 chỉ ra: 'Others have replaced leaves with thorns or spines' -> Gai ở các loài cây chịu hạn là bộ phận thay thế cho lá cây.">
+            <p><b>Question 36.</b> According to paragraph 4, thorns on xerophytes ____________.</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. are similar to blades of grass.</div>
+                <div class="option" onclick="check(this, 'B')">B. can reach water very far underground</div>
+                <div class="option" onclick="check(this, 'C')">C. are what some plants have instead of leaves</div>
+                <div class="option" onclick="check(this, 'D')">D. help keep the plants from being eaten by animals</div>
+            </div>
+        </div>
+        <div class="question" data-id="37" data-ans="A" data-title="Question 37 (Bài đọc Sa mạc)" data-hint="Đoạn 5 thảo luận về các loài thực vật né tránh hạn hán (Drought-avoiding plants) sống chu kỳ ngắn, rụng hạt rồi chết hoặc ngủ đông. Câu A tổng kết tốt nhất ý này.">
+            <p><b>Question 37.</b> Which of the following best summarizes of paragraph 5?</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. Xerophytes are drought-resistant plants with deep root systems and adaptations like small leaves or thorns, enabling them to survive in arid environments</div>
+                <div class="option" onclick="check(this, 'B')">B. Xerophytes, mainly shrubs like the creosote bush, have shallow roots and large leaves to absorb as much water as possible in arid environments.</div>
+                <div class="option" onclick="check(this, 'C')">C. Xerophytes are the only type of vegetation in deserts, and they survive by growing very quickly after rainfalls to absorb water.</div>
+                <div class="option" onclick="check(this, 'D')">D. Xerophytes, such as the mesquite bush, are drought-resistant plants that only survive in areas with frequent rainfall by developing thorns and spines.</div>
+            </div>
+        </div>
+        <div class="question" data-id="38" data-ans="B" data-title="Question 38 (Bài đọc Sa mạc)" data-hint="Đoạn văn viết: 'Drought-avoiding plants, on the other hand, escape unfavorable conditions by perishing. These include annuals and perennials.' -> Từ 'These' thay thế trực tiếp cho cụm phía trước là 'drought-avoiding plants'.">
+            <p><b>Question 38.</b> The word “ <b>these</b> ” in paragraph 5 refers to ____________.</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. xerophytes</div>
+                <div class="option" onclick="check(this, 'B')">B. drought-avoiding plants</div>
+                <div class="option" onclick="check(this, 'C')">C. succulents</div>
+                <div class="option" onclick="check(this, 'D')">D. unfavorable conditions</div>
+            </div>
+        </div>
+        <div class="question" data-id="39" data-ans="C" data-title="Question 39 (Bài đọc Sa mạc)" data-hint="Dựa vào đoạn 2, nhóm 'minimum variance behavior' gồm succulents, true xerophytes có đặc điểm: grow slowly (A), use water efficiently/modified respiration (B), deep roots (D). Đặc điểm ra hạt nhanh (rapid seed production) thuộc về nhóm 'maximum variance behavior'.">
+            <p><b>Question 39.</b> According to the author, all of the following are associated with plants that exhibit “ minimum variance behavior ” EXCEPT ____________.</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. slow growth</div>
+                <div class="option" onclick="check(this, 'B')">B. modified respiration</div>
+                <div class="option" onclick="check(this, 'C')">C. rapid seed production</div>
+                <div class="option" onclick="check(this, 'D')">D. deep root systems</div>
+            </div>
+        </div>
+        <div class="question" data-id="40" data-ans="B" data-title="Question 40 (Bài đọc Sa mạc)" data-hint="Đoạn cuối viết: 'Perennials, such as the ocotillo, may go dormant during dry periods, spring to life when it rains, and then return to dormancy... up to five times per year.' -> Loài này có thể chuyển đổi giữa trạng thái ngủ và tăng trưởng nhiều lần trong năm.">
+            <p><b>Question 40.</b> Which statement about a perennial plant called “ocotillo” is supported by the text?</p>
+            <div class="options">
+                <div class="option" onclick="check(this, 'A')">A. It completes its entire life cycle in a single rainy season.</div>
+                <div class="option" onclick="check(this, 'B')">B. It can switch between dormancy and active growth multiple times in one year.</div>
+                <div class="option" onclick="check(this, 'C')">C. It survives drought by storing water in thick, fleshy leaves.</div>
+                <div class="option" onclick="check(this, 'D')">D. It avoids drought by producing seeds and then dying immediately.</div>
+            </div>
+        </div>
+
+        <div class="nav-btns"><button onclick="nextPage(4)">Quay lại</button><button onclick="finishExam()">NỘP BÀI</button></div>
+    </div>
+
+    <div id="page-result" class="page">
+        <h1>HOÀN THÀNH BÀI THI</h1>
+        <div id="result-display" style="text-align: center; font-size: 24px; margin-top: 30px;"></div>
+        
+        <div id="wrong-answers-box" class="wrong-list" style="display: none;">
+            <h3>DANH SÁCH CÁC CÂU LÀM CHƯA CHÍNH XÁC & GỢI Ý TỰ HỌC:</h3>
+            <div id="wrong-details"></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <button onclick="location.reload()">LÀM LẠI</button>
+        </div>
+    </div>
+
+    <script>
+        let score = 0;
+        let studentName = "";
+        let studentAnswers = {}; 
+        let answeredQuestions = new Set();
+        const totalQ = 40;
+
+        function startQuiz() {
+            studentName = document.getElementById('student-name').value;
+            if(!studentName) { alert("Vui lòng nhập tên!"); return; }
+            nextPage(1);
+        }
+
+        function nextPage(num) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + num).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        function check(element, choice) {
+            let qDiv = element.closest('.question');
+            let qId = qDiv.getAttribute('data-id');
+            
+            if(answeredQuestions.has(qId)) return;
+
+            element.classList.add('selected');
+            studentAnswers[qId] = choice;
+            answeredQuestions.add(qId);
+
+            qDiv.querySelectorAll('.option').forEach(opt => opt.classList.add('locked'));
+        }
+
+        function finishExam() {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-result').classList.add('active');
+            
+            score = 0;
+            let wrongHTML = "";
+            let hasWrong = false;
+
+            document.querySelectorAll('.question').forEach(qDiv => {
+                let qId = qDiv.getAttribute('data-id');
+                let correctAns = qDiv.getAttribute('data-ans');
+                let qTitle = qDiv.getAttribute('data-title');
+                let qHint = qDiv.getAttribute('data-hint');
+                let userAns = studentAnswers[qId] || "Chưa trả lời";
+
+                if(userAns === correctAns) {
+                    score++;
+                } else {
+                    hasWrong = true;
+                    wrongHTML += `
+                        <div class="wrong-item">
+                            <span class="wrong-q-title">${qTitle}</span><br>
+                            - Lựa chọn của bạn: <b>${userAns}</b> <span style="color: #e53e3e;">(Chưa chính xác)</span><br>
+                            <div class="wrong-hint">💡 <b>Gợi ý tra cứu kiến thức:</b> ${qHint}</div>
+                        </div>
+                    `;
+                }
+            });
+
+            let finalPoint = (score / totalQ) * 10;
+            document.getElementById('result-display').innerHTML = `
+                <p>Học sinh: <b>${studentName}</b></p>
+                <p>Số câu trả lời đúng: <b>${score} / ${totalQ}</b></p>
+                <p style="font-size: 35px; color: #1a73e8;">ĐIỂM SỐ: <b>${finalPoint.toFixed(2)}</b></p>
+            `;
+
+            if(hasWrong) {
+                document.getElementById('wrong-answers-box').style.display = 'block';
+                document.getElementById('wrong-details').innerHTML = wrongHTML;
+            } else {
+                document.getElementById('wrong-answers-box').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
